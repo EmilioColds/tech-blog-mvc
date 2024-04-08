@@ -26,7 +26,7 @@ document.querySelectorAll('.edit-post-form').forEach(form => {
     });
 
     form.querySelector('.delete').addEventListener('click', async (event) => {
-        const postID = button.dataset.id;
+        const postID = event.target.dataset.id;
         const confDelete = confirm('Are you sure?');
         if(confDelete) {
             const response = await fetch(`/dashboard/delete/${postID}`, {

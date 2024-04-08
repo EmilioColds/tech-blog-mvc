@@ -4,7 +4,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
     try {
-        const userData = await User.findByPk(req.session.userID, {
+        const userData = await User.findByPk(req.session.userId, {
             attributes: { exclude: ['password'] },
             include: [{ model: Post }],
         });
@@ -55,7 +55,7 @@ router.put('/update/:id', withAuth, async (req, res) => {
             {
                 where: {
                     id: req.params.id,
-                    userID: req.session.UderID,
+                    userID: req.session.userId,
                 },
             }
         );
@@ -75,7 +75,7 @@ router.delete('/delete/:id', withAuth, async (req, res) => {
         const result = await Post.destroy({
             where: {
                 id: req.params.id,
-                userID: req.session.userID,
+                userID: req.session.userId,
             },
         });
 

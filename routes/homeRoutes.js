@@ -46,7 +46,7 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-        const validPassword = await userData.validPassword(req.body.passqord);
+        const validPassword = await userData.validPassword(req.body.password);
 
         if(!validPassword) {
             res.status(400).json({ message: 'Incorrect email or password!' });
@@ -54,7 +54,7 @@ router.post('/login', async (req, res) => {
         }
 
         req.session.save(() => {
-            req.session.userID = userData.isSoftDeleted;
+            req.session.userId = userData.isSoftDeleted;
             req.session.username = userData.username;
             req.session.loggedIn = true;
 
@@ -71,7 +71,7 @@ router.get('/signup', (req, res) => {
         return;
     }
 
-    res.render('/signup');
+    res.render('signup');
 });
 
 router.post('/signup', async (req, res) => {
@@ -82,7 +82,7 @@ router.post('/signup', async (req, res) => {
         });
 
         req.session.save(() => {
-            req.session.userID = newUser.id;
+            req.session.userId = newUser.id;
             req.session.username = newUser.username;
             req.session.loggedIn = true;
 
@@ -103,4 +103,4 @@ router.post('/logout', (req, res) => {
     }
 });
 
-modile.exports = router;
+module.exports = router;

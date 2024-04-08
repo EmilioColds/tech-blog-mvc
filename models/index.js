@@ -5,12 +5,12 @@ const User = require('./user');
 const Post = require('./posts');
 
 User.hasMany(Post, {
-    foreignKey: 'userID',
+    foreignKey: 'userId',
     onDelete: 'CASCADE',
 });
 
 Post.belongsTo(User, {
-    foreignKey: 'userID',
+    foreignKey: 'userId',
 });
 
 module.exports = { sequelize, User, Post };

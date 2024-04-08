@@ -72,3 +72,61 @@ textarea {
     border: 1px solid #ccc;
     padding: 20px;
 }
+
+.auth-form-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 40px auto;
+}
+
+.auth-form h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-field {
+    margin-bottom: 15px;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-field input[type="text"],
+.form-field input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-actions .btn {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.form-actions .btn:hover {
+    background-color: #4cae4c;
+}
+
+.form-actions p {
+    margin-top: 10px;
+}
+
+.form-actions a {
+    color: #5cb85c;
+    text-decoration: none;
+}

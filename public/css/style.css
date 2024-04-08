@@ -1,0 +1,74 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+nav a {
+    color: #fff;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.post {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.post:last-child {
+    border-bottom: none;
+}
+
+.post h2 {
+    color: #333;
+}
+
+.post-info span {
+    font-size: 0.9em;
+    color: #666;
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+button.delete {
+    background-color: #d9534f;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+textarea {
+    height: 100px;
+}
+
+.edit-post-form {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+}

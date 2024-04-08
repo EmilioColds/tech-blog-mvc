@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const bcrypt = require('bcrytp');
 
 class User extends Model {}
 
@@ -29,5 +30,14 @@ User.init(
         modelName: 'user',
     }
 );
+
+User.addHook('beforeCreate', async (user) => {
+    user.password = await bcrypt.hash(user.password, 10);
+    return user;
+});
+
+User.prototype.validPassword = (password) => {
+    return bcrypt.compare(password, this.password);
+};
 
 module.exports = User;

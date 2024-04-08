@@ -26,7 +26,7 @@ router.get('/new', withAuth, (req, res) => {
     });
 });
 
-router.get('/edit/:id', withAuth, async (req, res) => {
+router.get('/update/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id);
 
@@ -45,7 +45,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     }
 });
 
-router.put('/edit/:id', withAuth, async (req, res) => {
+router.put('/update/:id', withAuth, async (req, res) => {
     try {
         const result = await Post.update(
             {

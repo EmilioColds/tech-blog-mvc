@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const loginForm = document.querySelector('.login-form');
+    const loginForm = document.querySelector('#login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', loginHandler);
     }

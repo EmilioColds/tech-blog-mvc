@@ -23,7 +23,6 @@ router.get('/', withAuth, async (req, res) => { //withAuth
 router.get('/new-post', withAuth, (req, res) => { //withAuth
     res.render('new-post', {
         loggedIn: true,
-        layout: 'dashboard'
     });
 });
 
@@ -98,7 +97,6 @@ router.post('/new-post', withAuth, async (req, res) => {
             userId: req.session.userId
         });
         res.redirect('/dashboard');
-        res.status(200).json(newPostData);
     } catch (err) {
         console.error('Failed to create the new post!', err);
         res.status(500).json({ message: 'Fail to create new post! '});

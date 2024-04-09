@@ -43,4 +43,11 @@ document.querySelectorAll('.edit-post-form').forEach(form => {
             }
         }
     });
+
+    const newPostBtn = document.querySelector('#new-post-btn');
+    if(newPostBtn) {
+        newPostBtn.addEventListener('click', () => {
+            document.location.href = '/dashboard/new-post';
+        });
+    }
 });

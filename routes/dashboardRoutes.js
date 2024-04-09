@@ -20,9 +20,10 @@ router.get('/', withAuth, async (req, res) => { //withAuth
     }
 });
 
-router.get('/new', withAuth, (req, res) => { //withAuth
+router.get('/new-post', withAuth, (req, res) => { //withAuth
     res.render('new-post', {
         loggedIn: true,
+        layout: 'dashboard'
     });
 });
 
@@ -88,5 +89,20 @@ router.delete('/delete/:id', withAuth, async (req, res) => { //withAuth
         res.status(500).json(err);
     }
 });
+
+router.post('/new-post', withAuth, async (req, res) => {
+    try {
+        const newPostData = await Post.create({
+            title: req.body.title,
+            content: req.body.content,
+            userId: req.session.userId
+        });
+        res.redirect('/dashboard');
+        res.status(200).json(newPostData);
+    } catch (err) {
+        console.error('Failed to create the new post!', err);
+        res.status(500).json({ message: 'Fail to create new post! '});
+    }
+})
 
 module.exports = router;

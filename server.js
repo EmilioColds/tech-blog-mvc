@@ -8,16 +8,16 @@ const path = require('path')
 const hbHelper = require('./utils/helpers');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 const sess = {
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'Super secret',
     cookie: { maxAge: 15 * 60 * 1000 }, //Session will expire after 15 minutes
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
-        db: sequelize
-    })
+        db: sequelize,
+    }),
 };
 
 app.use(session(sess));

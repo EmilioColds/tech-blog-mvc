@@ -9,15 +9,16 @@ async function loginHandler(event) {
             method: 'POST',
             body: JSON.stringify({
                 username,
-                password
+                password,
             }),
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
         });
 
         if(response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Not logged in!');
+            const data = await response.json();
+            alert(data.message);
         }
     }
 }

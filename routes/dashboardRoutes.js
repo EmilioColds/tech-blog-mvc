@@ -55,7 +55,7 @@ router.put('/update/:id', withAuth, async (req, res) => {
             {
                 where: {
                     id: req.params.id,
-                    userID: req.session.userId,
+                    userId: req.session.userId,
                 },
             }
         );
@@ -75,7 +75,7 @@ router.delete('/delete/:id', withAuth, async (req, res) => {
         const result = await Post.destroy({
             where: {
                 id: req.params.id,
-                userID: req.session.userId,
+                userId: req.session.userId,
             },
         });
 

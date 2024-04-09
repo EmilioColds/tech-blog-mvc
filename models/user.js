@@ -37,7 +37,7 @@ User.addHook('beforeCreate', async (user) => {
 });
 
 User.prototype.validPassword = function(password) {
-    return bcrypt.compare(password, this.password);
+    return bcrypt.compareSync(password, this.password);
 };
 
 module.exports = User;

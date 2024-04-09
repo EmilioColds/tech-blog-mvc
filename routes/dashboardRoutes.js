@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => { //withAuth
     try {
         const userData = await User.findByPk(req.session.userId, {
             attributes: { exclude: ['password'] },
@@ -20,13 +20,13 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-router.get('/new', withAuth, (req, res) => {
+router.get('/new', withAuth, (req, res) => { //withAuth
     res.render('new-post', {
         loggedIn: true,
     });
 });
 
-router.get('/update/:id', withAuth, async (req, res) => {
+router.get('/update/:id', withAuth, async (req, res) => { //withAuth
     try {
         const postData = await Post.findByPk(req.params.id);
 
@@ -45,7 +45,7 @@ router.get('/update/:id', withAuth, async (req, res) => {
     }
 });
 
-router.put('/update/:id', withAuth, async (req, res) => {
+router.put('/update/:id', withAuth, async (req, res) => { //withAuth
     try {
         const result = await Post.update(
             {
@@ -70,7 +70,7 @@ router.put('/update/:id', withAuth, async (req, res) => {
     }
 });
 
-router.delete('/delete/:id', withAuth, async (req, res) => {
+router.delete('/delete/:id', withAuth, async (req, res) => { //withAuth
     try {
         const result = await Post.destroy({
             where: {

@@ -3,7 +3,9 @@ const session = require('express-session');
 const exphbs = require('express-handlebars').engine;
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./config/connection');
-const routes = require('./routes');
+// const routes = require('./routes');
+const homeRoutes = require('./routes/homeRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
 const path = require('path')
 const hbHelper = require('./utils/helpers');
 
@@ -32,7 +34,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.use(routes);
+// app.use(routes);
+app.use('/', homeRoutes);
+app.use('/dashboard', dashboardRoutes);
 
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Server running in http://localhost:${PORT}`));

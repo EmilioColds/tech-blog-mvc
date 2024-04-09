@@ -34,6 +34,7 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
+        console.log(`Login attempt for user: ${req.body.username}`);
         const userData = await User.findOne({
             where: {
                 username: req.body.username
@@ -57,9 +58,11 @@ router.post('/login', async (req, res) => {
             req.session.username = userData.username;
             req.session.loggedIn = true;
 
+            console.log(`${req.body.username} logged in successfully`);
             res.json({ user: userData, message: 'Success! You are logged in!' });
         });
     } catch (err) {
+        console.error('Error in login:', err);
         res.status(500).json(err);
     }
 });
@@ -75,6 +78,7 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', async (req, res) => {
     try {
+        console.log(`Signup attempt for user: ${req.body.username}`);
         const newUser = await User.create({
             username: req.body.username,
             password: req.body.password,
@@ -85,14 +89,17 @@ router.post('/signup', async (req, res) => {
             req.session.username = newUser.username;
             req.session.loggedIn = true;
 
+            console.log(`${req.body.username} signed up and logged in successfully`);
             res.json({ user: newUser, message: 'Success! You are signed in!' });
         });
     } catch (err) {
+        console.error('Error in signup:', err);
         res.status(500).json(err);
     }
 });
 
 router.post('/logout', (req, res) => {
+    console.log('User logging out:', req.session.username);
     if(req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();

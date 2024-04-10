@@ -5,7 +5,7 @@ async function logout() {
     });
 
     if(response.ok) {
-        window.location.href = ('/');
+        window.location.href = '/';
     } else {
         const data = await response.json();
         alert(data.message);

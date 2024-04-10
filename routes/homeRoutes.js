@@ -99,18 +99,14 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-    console.log('User logging out:', req.session.username);
+    console.log('----- Trying to logout! -----')
     if(req.session.loggedIn) {
-        console.log('---------------------------------- USER LOGOUT -------------------------------------')
         req.session.destroy(() => {
-            res.redirect('/');
-        console.log('---------------------------------- SESSION DESTROYED -------------------------------------')
+            res.json({ message: 'Logout completed'});
+            console.log('----- Session DESTROYED -----')
         });
     } else {
         res.status(404).end();
-        console.error('Error in logout:', err);
-        console.log('---------------------------------- ERROR -------------------------------------')
     }
 });
-
 module.exports = router;

@@ -5,11 +5,16 @@ async function logout() {
     });
 
     if(response.ok) {
-        document.location.replace('/');
+        window.location.href = ('/');
     } else {
         const data = await response.json();
         alert(data.message);
     }
 }
 
-document.querySelector('#logout').addEventListener('click', logout);
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#logout').addEventListener('click', (e) => {
+        e.preventDefault();
+        logout();
+    });
+});

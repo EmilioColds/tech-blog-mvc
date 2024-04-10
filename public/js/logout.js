@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (response.ok) {
-                document.location.replace('/homepage');
+                document.location.replace('/main');
             } else {
                 alert("----- Failed to log out. -----");
             }

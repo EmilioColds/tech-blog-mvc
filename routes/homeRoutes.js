@@ -102,10 +102,11 @@ router.post('/logout', (req, res) => {
     console.log('User logging out:', req.session.username);
     if(req.session.loggedIn) {
         req.session.destroy(() => {
-            res.end();
+            res.redirect('/');
         });
     } else {
         res.status(404).end();
+        console.error('Error in logout:', err);
     }
 });
 

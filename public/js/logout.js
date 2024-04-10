@@ -5,7 +5,7 @@ async function logout() {
     });
 
     if(response.ok) {
-        window.location.href = '/';
+        window.location.replace('/');
     } else {
         const data = await response.json();
         alert(data.message);
@@ -13,7 +13,8 @@ async function logout() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#logout').addEventListener('click', (e) => {
+    const logoutLink = document.querySelector('#logout');
+    logoutLink.addEventListener('click', (e) => {
         e.preventDefault();
         logout();
     });
